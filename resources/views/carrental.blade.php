@@ -3,9 +3,9 @@
 @section('content')
 
 	<div class="container my-4 py-4">
-		<div class="row">
-			<div class="col-12">
-				<h3 class="text-center">Our Car Rental Services</h3>
+		<div class="row py-4">
+			<div class="col-12 py-4">
+				<h3 class="text-center py-4">Our Car Rental Services</h3>
 				<p class="lead py-4 my-2 mx-2">Don’t need to rush to Taxi kiosk for transportation to your lodging. We are delivering our rental service on your demands of vehicle with in stock at reasonable price .All the cars introduced by us will be cautions of safe driving and your comfort at all times. Please click on each type of motors and choose type of service we should deliver.</p>
 			</div>
 		

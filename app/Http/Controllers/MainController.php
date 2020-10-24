@@ -18,4 +18,14 @@ class MainController extends Controller
     {
     	return view('testing');
     }
+    public function service($value='')
+    {
+        // return view('service',['name'=>'May Win Thwel']);(string)
+
+        $students=array(
+            array('name'=>'mg mg','age'=>22),
+            array('name'=>'su su','age'=>21)
+        );
+        return view('service',['students'=>$students]);
+    }
 }
