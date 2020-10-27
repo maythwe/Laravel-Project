@@ -43,6 +43,7 @@
 					<li class="nav-item"><a href="{{route('carrentalpage')}}" class="nav-link">Car Rental</a></li>
 					<li class="nav-item"><a href="{{route('aboutpage')}}" class="nav-link">AboutUs</a></li>
 					<li class="nav-item"><a href="{{route('contactpage')}}" class="nav-link pr-0">Contact</a></li>
+					<li class="nav-item"><a href="{{route('student.index')}}" class="nav-link pr-0">Student List</a></li>
 				</ul>
 			</div>
 		</div>

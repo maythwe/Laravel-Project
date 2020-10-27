@@ -1,4 +1,5 @@
 @extends('master')
+@section('title','Detail')
 @section('content')
 	{{-- carousel --}}
 	<div id="carouselExampleCaptions" class="carousel slide py-4" data-ride="carousel">
@@ -11,7 +12,7 @@
 			<div class="carousel-item active">
 				<img src="{{asset('mytemplateasset/img/cover.jpg')}}" class="d-block w-100" alt="...">
 				<div class="carousel-caption d-none d-md-block">
-					<h5>All Students</h5>
+					<h5>Student Detail</h5>
 					
 				</div>
 			</div>
@@ -37,43 +38,11 @@
 	{{-- Main Content --}}
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
-				<a href="{{route('student.create')}}" class="btn btn-info">Add New</a>
-			</div>
 			<div class="col-lg-8 col-md-10 mx-auto">
-				<table border="1" class="table">
-					<thead>
-						<tr>
-							<th>No</th>
-							<th>Name</th>
-							<th>Email</th>
-							<th>Phone No</th>
-							<th>Actions</th>
-						</tr>
-					</thead>
-					<tbody>
-						@php
-							$i=1;
-						@endphp
-						@foreach($students as $row)
-						<tr>
-							<td>{{$i++}}</td>
-							<td>{{$row->name}}</td>
-							<td>{{$row->email}}</td>
-							<td>{{$row->phoneno}}</td>
-							<td>
-								<a href="{{route('student.edit',$row->id)}}" class="btn btn-warning">Edit</a>
-								<form method="post" action="{{route('student.destroy',$row->id)}}" onsubmit="return confirm('Are you sure to delete?')" class="d-inline-block">
-								@csrf
-								@method('DELETE')
-								<input type="submit" name="btnsubmit" class="btn btn-danger" value="Delete">
-								</form>
-								<a href="{{route('student.show',$row->id)}}" class="btn btn-primary">Detail</a>
-							</td>
-						</tr>
-						@endforeach
-					</tbody>
-				</table>
+				<p>Name:<span>{{$student->name}}</span></p>
+				<p>Email:<span>{{$student->email}}</span></p>
+				<p>Phone No:<span>{{$student->phoneno}}</span></p>
+				<p>Address:<span>{{$student->address}}</span></p>
 			</div>
 		</div>
 	</div>

@@ -26,7 +26,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('student.create');
     }
 
     /**
@@ -37,7 +37,26 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->name);
+        //validation
+        $request->validate([
+            "rollno"=>'required|min:5',
+            "name"=> 'required',
+            "email"=>'required|unique:students',
+            "phoneno"=>'required',
+            "address"=>'required'       
+        ]);
+        //dd("passed");
+        $student=new Student;
+        $student->rollno=$request->rollno;
+        $student->name=$request->name;
+        $student->email=$request->email;
+        $student->phoneno=$request->phoneno;
+        $student->address=$request->address;
+        $student->save();
+
+        return redirect()->route('student.index');
+
     }
 
     /**
@@ -48,7 +67,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        return view('student.show',compact('student'));
     }
 
     /**
@@ -59,7 +78,7 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        return view('student.edit',compact('student'));
     }
 
     /**
@@ -71,7 +90,34 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+        //dd($request->name);
+        //validation
+        // if ($student->email==$request->email && $student->rollno==$request->rollno) {
+        //     $request->validate([
+        //         "name"=>'required',
+        //         "phoneno"=>'required',
+        //         "address"=>'required'
+
+        //     ]);
+        // }else{
+        $request->validate([
+            "rollno"=>'required|min:5|unique:students,rollno,'.$student->id,
+            "name"=> 'required',
+            "email"=>'required|unique:students,email,'.$student->id,
+            "phoneno"=>'required',
+            "address"=>'required'       
+        ]);
+        // }
+        //dd("passed");
+        $student->rollno=$request->rollno;
+        $student->name=$request->name;
+        $student->email=$request->email;
+        $student->phoneno=$request->phoneno;
+        $student->address=$request->address;
+        $student->save();
+
+        return redirect()->route('student.index');
+
     }
 
     /**
@@ -82,6 +128,7 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        return redirect()->route('student.index');
     }
 }
